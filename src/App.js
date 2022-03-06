@@ -1,8 +1,12 @@
 import './App.css';
+import Generator from './components/Generator';
 
 function App() {
   return (
-<h1>The Great HTML Escape</h1>
+    <>
+<Generator />
+<footer>Created by Filip Rybczyński, 2022</footer>
+    </>
   );
 }
 
