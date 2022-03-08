@@ -9,7 +9,7 @@ class Options extends React.Component {
   render() {
     const { depth, useQuotes, tone } = this.props.generatorState;
     return (
-      <div>
+      <form>
         <label>
           How deep do you want to escape?
           <input
@@ -38,14 +38,16 @@ class Options extends React.Component {
             aria-label="What tone do you want the escaping to be narrated?"
             onChange={this.props.updateState}
           >
-            <option>Casual</option>
-            <option>Funny guy</option>
-            <option>Despairing</option>
-            <option>Pissed</option>
+            <option value="casual">Casual</option>
+            <option value="funny">Funny</option>
+            <option value="despairing">Despairing</option>
+            <option value="pissed">Pissed</option>
           </select>
+          
         </label>
-        <button type="button"> Generate</button>
-      </div>
+        {/* type="submit" is default */}
+        <button  onClick={e => e.preventDefault()}> Generate</button>
+      </form>
     );
   }
 }

@@ -8,20 +8,26 @@ export default class Generator extends React.Component {
     super(props);
 
     this.state = {
+      // Values used in options
       depth: 0,
       useQuotes: false,
       tone: "Casual",
     };
   }
 
+  //function used to handle changes of inputs in Options
+
   updateState = (e) => {
-    this.setState({
+    const {name, value, type} = e.target
+
+    this.setState({                             
       ...this.state,
-      [e.target.name]: e.target.hasOwnProperty("checked")
+      [name]: type === "checkbox" 
         ? e.target.checked
-        : e.target.value,
+        : value,
+        // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
     });
-    if (!e.target.hasOwnProperty("checked")) e.preventDefault();
+    if (type !== "checkbox") e.preventDefault(); // preventDefault causes checkbox inputs to act all wonky
   };
 
   render() {
