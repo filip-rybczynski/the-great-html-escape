@@ -1,5 +1,4 @@
 import React from "react";
-import generateEscapedStrings from "../functions/generateEscapedStrings";
 
 class Options extends React.Component {
   constructor(props) {
@@ -47,10 +46,7 @@ class Options extends React.Component {
           
         </label>
         {/* type="submit" is default for <button>*/}
-        <button  onClick={(e) => {
-          e.preventDefault();
-          generateEscapedStrings()
-        }}> Generate</button>
+        <button  onClick={this.props.updateEscapedStrings}> Generate</button>
       </form>
     );
   }
