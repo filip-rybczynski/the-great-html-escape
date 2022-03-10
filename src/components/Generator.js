@@ -20,6 +20,9 @@ export default class Generator extends React.Component {
       initialValue: "<",
       escapedStrings: [],
       toneSpecificPhrases: {}, // object of arrays
+      // property to control whether text is generated in the Display component
+      // this way escapedStrings can remain in state even when display is cleared
+      displayText: true,
     };
   }
 
@@ -35,7 +38,7 @@ export default class Generator extends React.Component {
     if (type !== "checkbox") e.preventDefault(); // preventDefault causes checkbox inputs to act all wonky
   };
 
-  //function that will generate an array of escaped strings
+  //function that will update the array of escaped strings in the state
   updateEscapedStrings = (e) => {
     e.preventDefault();
 
@@ -43,8 +46,15 @@ export default class Generator extends React.Component {
 
     this.setState({
       escapedStrings: newArray,
+      // and to ensure text is displayed:
+      displayText: true,
     });
   };
+
+  // Function that will prevent the escapedString array to be passed on to the Display component and, as a result, no text will be displayed (as generation is dependent on there being props.children)
+  handleClearing = () => {
+    this.setState({displayText: false})
+  }
 
   render() {
     const { tone } = this.state;
@@ -56,8 +66,8 @@ export default class Generator extends React.Component {
           updateState={this.updateState}
           updateEscapedStrings={this.updateEscapedStrings}
         />
-        <Display>
-          {this.state.escapedStrings}
+        <Display handleClearing={this.handleClearing}>
+          {this.state.displayText && this.state.escapedStrings}
           {/* Alright, let me tell you about escaping (while async loads)
 
 HTML escaping is a bit funny, but not much funnier than writing how to do it. Say I want to use the symbol < in a sentence. That's quite easy to do: I just write "&lt;". However, in order to write "&lt;", I need to write "&quot;&amp;lt;&quot;". Then in order to write that, I need to

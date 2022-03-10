@@ -46,7 +46,7 @@ class Options extends React.Component {
           
         </label>
         {/* type="submit" is default for <button>*/}
-        <button  onClick={this.props.updateEscapedStrings}> Generate</button>
+        <button  onClick={this.props.updateEscapedStrings}>Generate</button>
       </form>
     );
   }

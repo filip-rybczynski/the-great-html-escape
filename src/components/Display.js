@@ -11,18 +11,19 @@ class Display extends React.Component {
   quotesOn = false;
 
   render() {
-    // this.generateEscapedStrings(depth, useQuotes); // Previously the function was declared here
+
+    const {children} = this.props;
 
     return (
       <div>
-
           <ul>
-            {this.props.children.map((string) => (
+            {/*Text should only generate when props.children is passed down, since it is the escapedStrings array*/}
+            {children && children.map((string) => (
               <li key={string}>{string}</li>
             ))}
           </ul>
 
-        <button>Clear</button>
+        <button type="button" onClick={this.props.handleClearing}>Clear</button>
       </div>
     );
   }
