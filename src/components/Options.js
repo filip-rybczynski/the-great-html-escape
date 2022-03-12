@@ -7,15 +7,30 @@ class Options extends React.Component {
   }
 
   render() {
-    const { depth, useQuotes, tone } = this.props.generatorState;
+    const { depth, useQuotes, tone, initialChar } = this.props.generatorState;
     return (
       <form>
+        <label>
+          What character do you want to start with?
+          <select
+            name="initialChar"
+            value={initialChar}
+            onChange={this.props.updateState}
+          >
+            <option value="<">&lt;</option>
+            <option value=">">&gt;</option>
+            <option value="&amp;">&amp;</option>
+            <option value='"'>&quot;</option>
+          </select>
+        </label>
         <label>
           How deep do you want to escape?
           <input
             type="number"
             name="depth"
             value={depth}
+            min="0"
+            max="100"
             aria-label="Choose number of escape levels"
             onChange={this.props.updateState}
           />
@@ -43,10 +58,9 @@ class Options extends React.Component {
             <option value="despairing">Despairing</option>
             <option value="pissed">Pissed</option>
           </select>
-          
         </label>
         {/* type="submit" is default for <button>*/}
-        <button  onClick={this.props.updateEscapedStrings}>Generate</button>
+        <button onClick={this.props.updateEscapedStrings}>Generate</button>
       </form>
     );
   }
