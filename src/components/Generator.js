@@ -17,7 +17,7 @@ export default class Generator extends React.Component {
       tone: "Casual",
       escapedString: [],
       // properties used in text generation
-      initialValue: "<",
+      initialChar: "<",
       escapedStrings: [],
       toneSpecificPhrases: {}, // object of arrays
       // property to control whether text is generated in the Display component
@@ -41,7 +41,7 @@ export default class Generator extends React.Component {
   updateEscapedStrings = (e) => {
     e.preventDefault();
 
-    const newArray = generateEscapedStrings(this.state.depth, this.state.useQuotes);
+    const newArray = generateEscapedStrings(this.state.depth, this.state.useQuotes, this.state.initialChar);
 
     this.setState({
       escapedStrings: newArray,
