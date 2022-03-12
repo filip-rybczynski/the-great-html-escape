@@ -45,8 +45,6 @@ export default class Generator extends React.Component {
 
     this.setState({
       escapedStrings: newArray,
-      // and to ensure text is displayed:
-      displayText: true,
     });
   };
 
