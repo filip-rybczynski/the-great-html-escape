@@ -14,7 +14,7 @@ export default class Generator extends React.Component {
       // Values used in options
       depth: 0,
       useQuotes: false,
-      tone: "Casual",
+      tone: "casual",
       escapedString: [],
       // properties used in text generation
       initialChar: "<",
@@ -41,7 +41,11 @@ export default class Generator extends React.Component {
   updateEscapedStrings = (e) => {
     e.preventDefault();
 
-    const newArray = generateEscapedStrings(this.state.depth, this.state.useQuotes, this.state.initialChar);
+    const newArray = generateEscapedStrings(
+      this.state.depth,
+      this.state.useQuotes,
+      this.state.initialChar
+    );
 
     this.setState({
       escapedStrings: newArray,
@@ -50,8 +54,8 @@ export default class Generator extends React.Component {
 
   // Function that will prevent the escapedString array to be passed on to the Display component and, as a result, no text will be displayed (as generation is dependent on there being props.children)
   handleClearing = () => {
-    this.setState({escapedStrings: []})
-  }
+    this.setState({ escapedStrings: [] });
+  };
 
   render() {
     const { tone } = this.state;
@@ -63,11 +67,14 @@ export default class Generator extends React.Component {
           updateState={this.updateState}
           updateEscapedStrings={this.updateEscapedStrings}
         />
-        <Display handleClearing={this.handleClearing}>
+        <Display
+          handleClearing={this.handleClearing}
+          generatorState={this.state}
+        >
           {this.state.escapedStrings}
           {/* Alright, let me tell you about escaping (while async loads)
 
-HTML escaping is a bit funny, but not much funnier than writing how to do it. Say I want to use the symbol < in a sentence. That's quite easy to do: I just write "&lt;". However, in order to write "&lt;", I need to write "&quot;&amp;lt;&quot;". Then in order to write that, I need to
+HTML escaping is a bit funny, but not much funnier than writing how to do it. Say I want to use the character < in a sentence. That's quite easy to do: I just write "&lt;". However, in order to write "&lt;", I need to write "&quot;&amp;lt;&quot;". Then in order to write that, I need to
 
 And on and on it goes... */}
         </Display>
