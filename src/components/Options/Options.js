@@ -1,4 +1,5 @@
 import React from "react";
+import './options.scss';
 
 class Options extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Options extends React.Component {
   render() {
     const { depth, useQuotes, tone, initialChar } = this.props.generatorState;
     return (
-      <form>
+      <form className="options">
         <label>
           What character do you want to start with?
           <select

@@ -1,0 +1,20 @@
+.options {
+    width: 1000px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+
+    & label {
+        display: inline-block;
+
+        padding: 12px;
+
+        & * {
+            display: inline-block;
+            margin: 0px 8px;
+        }
+    }
+}
