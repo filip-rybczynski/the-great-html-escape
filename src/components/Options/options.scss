@@ -1,14 +1,37 @@
 .options {
-    width: 1000px;
+
+    width: 600px;
+
+    margin: auto;
+    padding: 24px;
 
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     flex-wrap: wrap;
 
+    border-radius: 16px;
+    box-shadow: 4px 4px 8px black, inset 4px 4px 8px hsla(0, 0%, 100%, 0.63);
 
+    background-color: white;
+    background: hsla(0, 0%, 100%, 0.3);
+    color: hsl(209, 100%, 15%);
 
     & label {
         display: inline-block;
+
+        padding: 12px;
+
+        & * {
+            display: inline-block;
+            margin: 0px 8px;
+        }
+    }
+
+// People still like cauliFlowers, obviously (mnemonic) - position, size, layout (inner), color, font, other
+
+    & button {
+        width: 100px;
 
         padding: 12px;
 
