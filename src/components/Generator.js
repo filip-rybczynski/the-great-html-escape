@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header";
-import Options from "./Options";
+import Header from "./Header/Header";
+import Options from "./Options/Options";
 import Display from "./Display";
 
 // Functions

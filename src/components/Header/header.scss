@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__main {
+        margin: 1rem 0;
+
+        font-size: 4.5rem;
+    }
+
+    &__secondary {
+        margin: 0 0 1rem;
+
+        font-size: 1.5rem;
+    }
+}

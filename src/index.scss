@@ -10,12 +10,23 @@ html {
 }
 
 body {
+  // out-of-the-box create-react-app styles
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // my own
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: hsl(209, 98%, 23%);
+
+  color: hsl(209, 50%, 60%)
 }
 
 code {
