@@ -62,6 +62,8 @@ class Options extends React.Component {
         </label>
         {/* type="submit" is default for <button>*/}
         <button onClick={this.props.updateEscapedStrings}>Generate</button>
+        {/* TODO: below button should only generate when text is generated and displayed */}
+        <button type="button" onClick={this.props.handleClearing}>Clear</button>
       </form>
     );
   }

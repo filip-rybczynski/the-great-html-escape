@@ -32,7 +32,6 @@ class Display extends React.Component {
           })}
           {!!children.length && end}
 
-        <button type="button" onClick={this.props.handleClearing}>Clear</button>
       </div>
     );
   }
