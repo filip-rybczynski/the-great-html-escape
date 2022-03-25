@@ -1,11 +1,12 @@
 import './App.css';
 import Generator from './components/Generator';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <>
 <Generator />
-<footer>Created by Filip Rybczyński, 2022</footer>
+<Footer year={2022}/>
     </>
   );
 }
