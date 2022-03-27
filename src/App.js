@@ -1,6 +1,6 @@
 import './App.css';
 import Generator from './components/Generator';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Footer/Footer.js';
 
 function App() {
   return (
