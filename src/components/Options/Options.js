@@ -1,5 +1,6 @@
 import React from "react";
 import './options.scss';
+import Button from "./../Button/Button.js";
 
 class Options extends React.Component {
   constructor(props) {
@@ -60,10 +61,12 @@ class Options extends React.Component {
             <option value="pissed">Pissed</option>
           </select>
         </label>
+        {/* I don't think I needed to make buttons components, but it was good practice */}
         {/* type="submit" is default for <button>*/}
-        <button onClick={this.props.updateEscapedStrings}>Generate</button>
+        <Button onClick={this.props.updateEscapedStrings} content="Generate"/>
         {/* TODO: below button should only generate when text is generated and displayed */}
-        <button type="button" onClick={this.props.handleClearing}>Clear</button>
+        <Button type="button" onClick={this.props.handleClearing} disabled mirrored content="Clear"/>
+
       </form>
     );
   }

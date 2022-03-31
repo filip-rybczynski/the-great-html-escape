@@ -1,0 +1,36 @@
+button {
+  padding: 0 8px 8px 0;
+
+  border-top-left-radius: 30% 50%;
+  border-bottom-left-radius: 30% 50%;
+  border-top-right-radius: 60% 50%;
+  border-bottom-right-radius: 60% 50%;
+
+  color: hsl(209, 98%, 23%);
+  box-shadow: 2px 2px 1px hsl(209, 98%, 23%),
+    inset -4px -4px 8px hsl(209, 50%, 60%);
+  border: none;
+
+  font-size: 1.3rem;
+  font-weight: 500;
+
+  transition: transform 0.05s ease-in;
+
+  &.mirror {
+    border-top-left-radius: 60% 50%;
+    border-bottom-left-radius: 60% 50%;
+    border-top-right-radius: 30% 50%;
+    border-bottom-right-radius: 30% 50%;
+  }
+
+  &:hover:not([disabled]) {
+    transform: scale(1.1);
+  }
+
+  &:active:not([disabled]) {
+    padding: 0 2px 2px 0;
+
+    background: hsla(0, 0%, 100%, 0.3);
+    box-shadow: inset 4px 4px 8px;
+  }
+}
