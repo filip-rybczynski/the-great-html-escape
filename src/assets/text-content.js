@@ -14,7 +14,7 @@ const phrases = {
                 " in turn requires using the following representation: "
             ],
             [
-                ". However, ",
+                ". Then again, ",
                 " should technically be written as "
             ],
             [

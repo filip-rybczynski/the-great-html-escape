@@ -12,16 +12,15 @@ export default class Generator extends React.Component {
 
     this.state = {
       // Values used in options
-      depth: 0,
+      initialChar: "<",
+      depth: 2,
       useQuotes: false,
       tone: "casual",
-      escapedString: [],
       // properties used in text generation
-      initialChar: "<",
       escapedStrings: [],
-      toneSpecificPhrases: {}, // object of arrays
-      // property to control whether text is generated in the Display component
-      // this way escapedStrings can remain in state even when display is cleared
+      // toneSpecificPhrases: {}, // object of arrays
+      // // property to control whether text is generated in the Display component
+      // // this way escapedStrings can remain in state even when display is cleared
     };
   }
 
@@ -69,15 +68,8 @@ export default class Generator extends React.Component {
         />
         <Display
           handleClearing={this.handleClearing}
-          generatorState={this.state}
-        >
-          {this.state.escapedStrings}
-          {/* Alright, let me tell you about escaping (while async loads)
-
-HTML escaping is a bit funny, but not much funnier than writing how to do it. Say I want to use the character < in a sentence. That's quite easy to do: I just write "&lt;". However, in order to write "&lt;", I need to write "&quot;&amp;lt;&quot;". Then in order to write that, I need to
-
-And on and on it goes... */}
-        </Display>
+          escapedStrings={this.state.escapedStrings}
+        />
       </>
     );
   }
