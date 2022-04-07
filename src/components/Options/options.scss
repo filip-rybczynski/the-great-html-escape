@@ -1,3 +1,5 @@
+@import './../../assets/variables.scss';
+
 .options {
     
     width: 600px;
@@ -11,11 +13,12 @@
     column-gap: 12px;
 
     border-radius: 16px;
-    box-shadow: 4px 4px 8px black, inset 4px 4px 8px hsla(0, 0%, 100%, 0.63);
+    box-shadow: 4px 4px 8px $shadow-black, inset 4px 4px 8px $shadow-white;
 
     background-color: white;
-    background: hsla(0, 0%, 100%, 0.3);
-    color: hsl(209, 100%, 15%);
+    background: $grayish;
+
+    color: $main;
 
     & label {
         display: inline-block;

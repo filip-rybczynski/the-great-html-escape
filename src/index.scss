@@ -1,3 +1,5 @@
+@import './assets/variables.scss';
+
 /* Setting border-box in the entire document, while allowing for changes to content-box or padding-box if ever required - inheriting the box-sizing property's value keeps an universal selector from overriding the CSS in such scenarios */
 html {
   box-sizing: border-box;
@@ -19,17 +21,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   // my own
+  position: relative;
+
+  min-height: 100vh;
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
-  background: hsl(209, 98%, 23%);
+  background: $main;
 
-  color: hsl(209, 50%, 60%)
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  color: $light;
 }

@@ -1,3 +1,5 @@
+@import './../../assets/variables.scss';
+
 button {
   padding: 0 8px 8px 0;
 
@@ -6,9 +8,10 @@ button {
   border-top-right-radius: 60% 50%;
   border-bottom-right-radius: 60% 50%;
 
-  color: hsl(209, 98%, 23%);
-  box-shadow: 2px 2px 1px hsl(209, 98%, 23%),
-    inset -4px -4px 8px hsl(209, 50%, 60%);
+  background: $button;
+  color: $main;
+  box-shadow: 2px 2px 1px $main,
+    inset -4px -4px 8px $light;
   border: none;
 
   font-size: 1.3rem;
@@ -22,6 +25,10 @@ button {
     border-top-right-radius: 30% 50%;
     border-bottom-right-radius: 30% 50%;
   }
+  
+  &:disabled {
+    opacity: 0.4;
+  }
 
   &:hover:not([disabled]) {
     transform: scale(1.1);
@@ -30,7 +37,7 @@ button {
   &:active:not([disabled]) {
     padding: 0 2px 2px 0;
 
-    background: hsla(0, 0%, 100%, 0.3);
+    background: $button-pressed;
     box-shadow: inset 4px 4px 8px;
   }
 }
