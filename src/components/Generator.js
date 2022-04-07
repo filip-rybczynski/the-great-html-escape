@@ -16,7 +16,9 @@ export default class Generator extends React.Component {
       depth: 2,
       useQuotes: false,
       tone: "casual",
+      mode: "prose",
       // properties used in text generation
+      display: false,
       escapedStrings: [],
       // toneSpecificPhrases: {}, // object of arrays
       // // property to control whether text is generated in the Display component
@@ -37,7 +39,7 @@ export default class Generator extends React.Component {
   };
 
   //function that will update the array of escaped strings in the state
-  updateEscapedStrings = (e) => {
+  generateEscapedStrings = (e) => {
     e.preventDefault();
 
     const newArray = generateEscapedStrings(
@@ -48,28 +50,36 @@ export default class Generator extends React.Component {
 
     this.setState({
       escapedStrings: newArray,
+      display: true,
     });
   };
 
   // Function that will prevent the escapedString array to be passed on to the Display component and, as a result, no text will be displayed (as generation is dependent on there being props.children)
   handleClearing = () => {
-    this.setState({ escapedStrings: [] });
+    this.setState({
+      escapedStrings: [],
+      display: false,
+    });
   };
 
   render() {
-    const { tone } = this.state;
+    const { display, tone, mode, escapedStrings } = this.state;
     return (
       <>
         <Header />
         <Options
           generatorState={this.state}
           updateState={this.updateState}
-          updateEscapedStrings={this.updateEscapedStrings}
-        />
-        <Display
+          generateEscapedStrings={this.generateEscapedStrings}
           handleClearing={this.handleClearing}
-          escapedStrings={this.state.escapedStrings}
         />
+        {display && (
+          <Display
+            escapedStrings={escapedStrings}
+            mode={mode}
+            tone={tone}
+          />
+        )}
       </>
     );
   }

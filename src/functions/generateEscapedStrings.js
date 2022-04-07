@@ -43,8 +43,5 @@ export default function generateEscapedStrings(depth = 0, useQuotes = false, ini
       strings.push(nextString);
     }
 
-    // TODO: remove the below
-    console.log(strings);
-
     return strings;
   };

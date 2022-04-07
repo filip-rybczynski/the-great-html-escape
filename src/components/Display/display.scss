@@ -1,7 +1,7 @@
 @import './../../assets/variables.scss';
 
 .display-container {
-    width: 80%;
+    max-width: 80%;
     margin: 2rem auto 4rem;
 
     padding: 2rem;
@@ -10,11 +10,6 @@
     background: $off-white;
 
     color: $main;
-
-    word-break: break-all;
-    text-align: justify;
-
-    // overflow-wrap: break-word;
 }
 
 
@@ -24,4 +19,6 @@ code {
     monospace;
 
     color: $code-color;
+
+    word-break: break-all;
 }
