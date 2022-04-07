@@ -13,24 +13,40 @@ class Display extends React.Component {
   quotesOn = false;
 
   render() {
+    const { escapedStrings } = this.props;
 
-    const {children, generatorState: {initialChar}} = this.props;
-    const {casual: {start, middle, end}} = textContent;
+    const [firstStr, ...otherStr] = escapedStrings;
+
+    const {
+      casual: { start, middle, end },
+    } = textContent;
 
     return (
       <div>
-          {/* <ul>
-            // Text should only generate when props.children is passed down, since it is the escapedStrings array
-            {children && children.map((string) => (
+        <p>
+        {/* <ul>
+            // Text should only generate when escapedStrings is passed down
+            {escapedStrings && escapedStrings.map((string) => (
               <li key={string}>{string}</li>
             ))}
           </ul> */}
-          {!!children.length && (start[0] + children[0] + start[1] + children[1])}
-          {!!children.length && children.map((string, i, children) => {
-            if(i === 0 || i === children.length - 1) return
-            return createSentence(string, children[i+1], middle[i < middle.length ? i : middle.length % i])
-          })}
-          {!!children.length && end}
+
+        {/* Text start */}
+        {!!escapedStrings.length && createSentence(firstStr, otherStr[0], start)}
+        {/* Text middle - skipped if there are only two escaped strings*/}
+        {!!otherStr.length &&
+          otherStr.map(
+            (string, i, arr) =>
+              i < arr.length - 1 &&
+              createSentence(
+                string,
+                arr[i + 1],
+                middle[i % middle.length]
+              )
+          )}
+        {/* Text end */}
+        {!!escapedStrings.length && end}
+        </p>
 
       </div>
     );

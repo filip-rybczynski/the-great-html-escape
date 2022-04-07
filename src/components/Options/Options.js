@@ -31,7 +31,8 @@ class Options extends React.Component {
             type="number"
             name="depth"
             value={depth}
-            min="0"
+            // TODO - might change min to 0 later on, but need ideas for text-content.js
+            min="2"
             max="100"
             aria-label="Choose number of escape levels"
             onChange={this.props.updateState}
