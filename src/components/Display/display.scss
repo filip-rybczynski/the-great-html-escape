@@ -1,0 +1,27 @@
+@import './../../assets/variables.scss';
+
+.display-container {
+    width: 80%;
+    margin: 2rem auto 4rem;
+
+    padding: 2rem;
+    border-radius: 1rem;
+
+    background: $off-white;
+
+    color: $main;
+
+    word-break: break-all;
+    text-align: justify;
+
+    // overflow-wrap: break-word;
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+
+    color: $code-color;
+}

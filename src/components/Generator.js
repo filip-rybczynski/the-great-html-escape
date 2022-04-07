@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header/Header";
 import Options from "./Options/Options";
-import Display from "./Display";
+import Display from "./Display/Display";
 
 // Functions
 import generateEscapedStrings from "../functions/generateEscapedStrings";

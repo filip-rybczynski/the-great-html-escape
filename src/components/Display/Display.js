@@ -1,6 +1,7 @@
 import React from "react";
-import createSentence from "../functions/createSentence";
-import textContent from "../assets/text-content";
+import createSentence from "../../functions/createSentence";
+import textContent from "../../assets/text-content";
+import './display.scss';
 
 class Display extends React.Component {
   constructor(props) {
@@ -22,8 +23,7 @@ class Display extends React.Component {
     } = textContent;
 
     return (
-      <div>
-        <p>
+        <p className="display-container">
         {/* <ul>
             // Text should only generate when escapedStrings is passed down
             {escapedStrings && escapedStrings.map((string) => (
@@ -48,7 +48,6 @@ class Display extends React.Component {
         {!!escapedStrings.length && end}
         </p>
 
-      </div>
     );
   }
 }
