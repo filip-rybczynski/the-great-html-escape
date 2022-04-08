@@ -24,7 +24,6 @@ class Options extends React.Component {
             <option value="<">&lt;</option>
             <option value=">">&gt;</option>
             <option value="&amp;">&amp;</option>
-            <option value='"'>&quot;</option>
           </select>
         </label>
         <label>
@@ -72,8 +71,8 @@ class Options extends React.Component {
             disabled={mode === "list"}
           >
             <option value="casual">Casual</option>
-            <option value="funny">Funny</option>
-            <option value="despairing">Despairing</option>
+            {/* <option value="funny">Funny</option>
+            <option value="despairing">Despairing</option> */}
             <option value="pissed">Pissed</option>
           </select>
         </label>

@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header/Header";
 import Options from "./Options/Options";
 import Display from "./Display/Display";
+import Description from "./Description/Description";
 
 // Functions
 import generateEscapedStrings from "../functions/generateEscapedStrings";
@@ -67,6 +68,7 @@ export default class Generator extends React.Component {
     return (
       <>
         <Header />
+        <Description />
         <Options
           generatorState={this.state}
           updateState={this.updateState}

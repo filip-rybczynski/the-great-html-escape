@@ -8,13 +8,13 @@ function FullTextEscape ({ escapedStrings, tone }) {
     const [firstStr, ...otherStr] = escapedStrings;
 
     const {
-      [tone]: { start, middle, end },
+      [tone]: { beginning, middle, end },
     } = textContent;
 
     return (
       <p className="display-prose">
         {/* Text start */}
-        {!!escapedStrings.length && generateProse(firstStr, otherStr[0], start)}
+        {!!escapedStrings.length && generateProse(firstStr, otherStr[0], beginning)}
         {/* Text middle - skipped if there are only two escaped strings*/}
         {!!otherStr.length &&
           otherStr.map(
