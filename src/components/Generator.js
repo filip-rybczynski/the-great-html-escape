@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header/Header";
 import Options from "./Options/Options";
 import Display from "./Display/Display";
 
@@ -60,7 +59,6 @@ export default class Generator extends React.Component {
     const { tone } = this.state;
     return (
       <>
-        <Header />
         <Options
           generatorState={this.state}
           updateState={this.updateState}
