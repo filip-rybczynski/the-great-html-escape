@@ -1,4 +1,4 @@
-export default function generateEscapedStrings(depth = 0, useQuotes = false, initialChar) {
+export default function generateDisplayData(depth = 0, useQuotes = false, initialChar) {
     // Initialize array of strings with first value that will later be iteratively escaped
     // Take into account whether user wants original value and subsequent escaped strings to be embedded in quotes or not
     const strings = useQuotes ? [`"${initialChar}"`] : [`${initialChar}`];

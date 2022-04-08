@@ -14,7 +14,7 @@ function FullTextEscape ({ escapedStrings, tone }) {
     return (
       <p className="display-prose">
         {/* Text start */}
-        {escapedStrings.length && generateSentence(firstStr, secondStr, beginning)}
+        {generateSentence(firstStr, secondStr, beginning)}
         {/* Text middle - skipped if there are only two escaped strings*/}
         {otherStr.length &&
           [secondStr, ...otherStr].map(
@@ -23,7 +23,7 @@ function FullTextEscape ({ escapedStrings, tone }) {
               generateSentence(string, arr[i + 1], middle[i % middle.length])
           )}
         {/* Text end */}
-        {escapedStrings.length && end}
+        {end}
       </p>
     );
   

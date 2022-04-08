@@ -5,7 +5,7 @@ import Display from "./Display/Display";
 import Description from "./Description/Description";
 
 // Functions
-import generateEscapedStrings from "../functions/generateEscapedStrings";
+import generateDisplayData from "../functions/generateDisplayData";
 
 export default class Generator extends React.Component {
   constructor(props) {
@@ -21,8 +21,11 @@ export default class Generator extends React.Component {
         mode: "prose",
       },
       // properties used in text generation
-      display: false,
-      escapedStrings: [],
+      displayData: {
+        displayMode: '',
+        displayTone: '',
+        escapedStrings: [],
+      }
       // toneSpecificPhrases: {}, // object of arrays
       // // property to control whether text is generated in the Display component
       // // this way escapedStrings can remain in state even when display is cleared
@@ -45,49 +48,55 @@ export default class Generator extends React.Component {
   };
 
   //function that will update the array of escaped strings in the state
-  generateEscapedStrings = (e) => {
+  generateDisplayData = (e) => {
     e.preventDefault();
 
-    const {depth, useQuotes, initialChar } = this.state.options;
+    const {options: {depth, useQuotes, initialChar, mode, tone }, displayData} = this.state;
 
-    const newArray = generateEscapedStrings(
+    const newArray = generateDisplayData(
       depth,
       useQuotes,
       initialChar
     );
 
     this.setState({
-      escapedStrings: newArray,
-      display: true,
+      displayData: {
+        displayMode: mode,
+        displayTone: tone,
+        escapedStrings: newArray,
+        }
     });
   };
 
   // Function that will prevent the escapedString array to be passed on to the Display component and, as a result, no text will be displayed (as generation is dependent on there being props.children)
   handleClearing = () => {
     this.setState({
-      escapedStrings: [],
-      display: false,
+      displayData: {
+        ...this.state.displayData,
+        escapedStrings: [],
+        }
     });
   };
 
   render() {
-    const { options: {mode, tone }, display, escapedStrings } = this.state;
+    const { options, displayData: {displayMode, displayTone, escapedStrings} } = this.state;
 
     return (
       <>
         <Header />
         <Description />
         <Options
-          generatorState={this.state}
+          optionsState={options}
+          canClear={!!escapedStrings.length} // clearing button should be disabled if there won't be any content generated in the Display component - which is dependent on whether there are any strings in the escapedStrings array
           updateState={this.updateState}
-          generateEscapedStrings={this.generateEscapedStrings}
+          generateDisplayData={this.generateDisplayData}
           handleClearing={this.handleClearing}
         />
-        {display && (
+        {!!escapedStrings.length && (
           <Display
             escapedStrings={escapedStrings}
-            mode={mode}
-            tone={tone}
+            mode={displayMode}
+            tone={displayTone}
           />
         )}
       </>

@@ -9,8 +9,8 @@ class Options extends React.Component {
   }
 
   render() {
-    const { options: {depth, useQuotes, tone, mode, initialChar}, display } =
-      this.props.generatorState;
+    const { optionsState: {depth, useQuotes, tone, mode, initialChar}, canClear } =
+      this.props;
       
     return (
       <form className="options">
@@ -79,14 +79,13 @@ class Options extends React.Component {
         {/* I don't think I needed to make buttons components, but it was good practice */}
         {/* type="submit" is default for <button>*/}
         <Button
-          onClick={this.props.generateEscapedStrings}
+          onClick={this.props.generateDisplayData}
           content="Generate"
         />
-        {/* TODO: below button should only generate when text is generated and displayed */}
         <Button
           type="button"
           onClick={this.props.handleClearing}
-          disabled={!display}
+          disabled={!canClear}
           mirrored
           content="Clear"
         />
