@@ -9,7 +9,7 @@ class Options extends React.Component {
   }
 
   render() {
-    const { depth, useQuotes, tone, mode, initialChar, display } =
+    const { options: {depth, useQuotes, tone, mode, initialChar}, display } =
       this.props.generatorState;
       
     return (

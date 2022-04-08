@@ -13,11 +13,13 @@ export default class Generator extends React.Component {
 
     this.state = {
       // Values used in options
-      initialChar: "<",
-      depth: 2,
-      useQuotes: false,
-      tone: "casual",
-      mode: "prose",
+      options: {
+        initialChar: "<",
+        depth: 2,
+        useQuotes: false,
+        tone: "casual",
+        mode: "prose",
+      },
       // properties used in text generation
       display: false,
       escapedStrings: [],
@@ -33,7 +35,10 @@ export default class Generator extends React.Component {
 
     this.setState({
       ...this.state,
-      [name]: type === "checkbox" ? e.target.checked : value,
+      options: {
+        ...this.state.options,
+        [name]: type === "checkbox" ? e.target.checked : value,
+      }
       // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
     });
     if (type !== "checkbox") e.preventDefault(); // preventDefault causes checkbox inputs to act all wonky
@@ -43,10 +48,12 @@ export default class Generator extends React.Component {
   generateEscapedStrings = (e) => {
     e.preventDefault();
 
+    const {depth, useQuotes, initialChar } = this.state.options;
+
     const newArray = generateEscapedStrings(
-      this.state.depth,
-      this.state.useQuotes,
-      this.state.initialChar
+      depth,
+      useQuotes,
+      initialChar
     );
 
     this.setState({
@@ -64,7 +71,8 @@ export default class Generator extends React.Component {
   };
 
   render() {
-    const { display, tone, mode, escapedStrings } = this.state;
+    const { options: {mode, tone }, display, escapedStrings } = this.state;
+
     return (
       <>
         <Header />
