@@ -36,13 +36,13 @@ export default class Generator extends React.Component {
   updateState = (e) => {
     const { name, value, type } = e.target;
 
+    const options = this.state.options;
+
+    options[name] = type === "checkbox" ? e.target.checked : value;
+    // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
+
     this.setState({
-      ...this.state,
-      options: {
-        ...this.state.options,
-        [name]: type === "checkbox" ? e.target.checked : value,
-      }
-      // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
+      options,
     });
     if (type !== "checkbox") e.preventDefault(); // preventDefault causes checkbox inputs to act all wonky
   };
@@ -51,7 +51,7 @@ export default class Generator extends React.Component {
   generateDisplayData = (e) => {
     e.preventDefault();
 
-    const {options: {depth, useQuotes, initialChar, mode, tone }, displayData} = this.state;
+    const {options: {depth, useQuotes, initialChar, mode, tone }} = this.state;
 
     const newArray = generateDisplayData(
       depth,
