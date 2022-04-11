@@ -1,8 +1,8 @@
 const phrases = {
     casual: {
         beginning: [
-            "HTML escaping is a bit funny, but not much funnier than writing how to do it. Say I want to write the character",
-            " in an HTML file. That's quite easy to do: I just write"
+            "For special characters, especially those relevant to HTML, the best practice seems to be to always escape them, just to avoid any mistakes. Sounds fair. Although as it happens, this can lead to funny situations. What do I mean? Well, say I want to write the character",
+            " in the HTML of this page. That's quite easy to do: I just write"
         ],
         middle: [
             [
@@ -11,15 +11,16 @@ const phrases = {
             ],
             [
                 ". But writing",
-                " in turn requires using the following representation:"
+                " would in turn - according to best practices - require using the following representation:"
             ],
             [
                 ". Then again,",
-                " should technically be written as"
+                " should technically be written as",
+                "just to be on the safe side"
             ],
             [
-                ". This won't do if you want to be thorough, though, since",
-                " should be escaped to"
+                ". This won't do if you want to be really thorough, though, since",
+                " should technically be escaped to"
             ],
             [
                 ". But to correctly encode",
@@ -27,24 +28,24 @@ const phrases = {
                 " should be used"
             ],
             [
-                ". Whatever one thinks about",
-                ", the job isn't done yet, because displaying that further necessitates using the string"
+                ". Whatever one thinks of",
+                ", it can't really be left at that, because wanting to show that in HTML further calls for escaping to"
             ],
             [
-                ". You might think you can wrap it up, but anyone paying attention will quickly realise that there's an obvious catch:",
+                ". You might think you can wrap it up here, but if you've been paying attention you'll quickly realise that there's an obvious catch:",
                 " itself is clearly in need of being escaped to"
             ],
             [
                 ". But if writing",
-                " was necessary to escape special characters, then it itself must be escaped to"
+                " was necessary to escape special characters, then it itself is not free from this necessity. Therefore, it also must be escaped to"
             ],
             [
-                ", which doesn't look great on its own, but matters get worse when you realize that this",
-                " itself must be escaped to an even more intimidating"
+                ", which doesn't look too pretty on its own, but matters get worse when you realize that",
+                " itself should be encoded properly - resulting in an even more intimidating"
             ],
 
         ],
-        end: ". And on and on it goes..."
+        end: ". And as you can see, it never ends. But lets stop it here - I bet we both have work to do."
     },
 
     // funny: {
@@ -103,7 +104,7 @@ const phrases = {
         ],
         middle: [
             [
-                "! If I want to include that in my HTML file, then I'm shit out of luck, because to \"correctly\" include",
+                "! If I want to show this example of escaping special characters in my HTML file, then I'm shit out of luck, because to \"correctly\" include",
                 " in line with \"best practices\", I should write",
                 " for the satisfaction of some bunch of useless self-appointed dev gurus who think this practice is - the audacity of this claim - \"best\""
             ],
