@@ -1,7 +1,7 @@
 @import './../../assets/variables.scss';
 
 .display-container {
-    width: 80%;
+    max-width: 80%;
     margin: 2rem auto 4rem;
 
     padding: 2rem;
@@ -10,11 +10,6 @@
     background: $off-white;
 
     color: $main;
-
-    word-break: break-all;
-    text-align: justify;
-
-    // overflow-wrap: break-word;
 }
 
 
@@ -24,4 +19,43 @@ code {
     monospace;
 
     color: $code-color;
+
+    word-break: break-all;
+}
+
+li {
+  position: relative;
+
+  margin: 6px 0;
+
+  list-style: none;
+
+  // Custom list points:
+
+  &::before {
+    content: '';
+    height: 0;
+    width: 0;
+
+    position: absolute;
+    left: -22px;
+    top: calc(0.5 * 1.2rem - 6px);
+
+    border-left: 8px solid $darker;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+
+  &::after {
+    content: '';
+    height: 0;
+    width: 0;
+
+    position: absolute;
+    left: -22px;
+    top: calc(0.5 * 1.2rem - 5px);
+
+    border-left: 7px solid $lighter;
+    border-top: 5px solid transparent;
+  }
 }

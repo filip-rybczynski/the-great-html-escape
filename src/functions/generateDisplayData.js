@@ -1,4 +1,4 @@
-export default function generateEscapedStrings(depth = 0, useQuotes = false, initialChar) {
+export default function generateDisplayData(depth = 0, useQuotes = false, initialChar) {
     // Initialize array of strings with first value that will later be iteratively escaped
     // Take into account whether user wants original value and subsequent escaped strings to be embedded in quotes or not
     const strings = useQuotes ? [`"${initialChar}"`] : [`${initialChar}`];
@@ -42,9 +42,6 @@ export default function generateEscapedStrings(depth = 0, useQuotes = false, ini
       // Push new string to the strings array. It's now the last string and will be the subject of the next loop (if it's triggered)
       strings.push(nextString);
     }
-
-    // TODO: remove the below
-    console.log(strings);
 
     return strings;
   };

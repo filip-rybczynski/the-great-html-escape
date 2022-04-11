@@ -1,9 +1,10 @@
 import React from "react";
 import Options from "./Options/Options";
 import Display from "./Display/Display";
+import Description from "./Description/Description";
 
 // Functions
-import generateEscapedStrings from "../functions/generateEscapedStrings";
+import generateDisplayData from "../functions/generateDisplayData";
 
 export default class Generator extends React.Component {
   constructor(props) {
@@ -11,12 +12,19 @@ export default class Generator extends React.Component {
 
     this.state = {
       // Values used in options
-      initialChar: "<",
-      depth: 2,
-      useQuotes: false,
-      tone: "casual",
+      options: {
+        initialChar: "<",
+        depth: 2,
+        useQuotes: false,
+        tone: "casual",
+        mode: "prose",
+      },
       // properties used in text generation
-      escapedStrings: [],
+      displayData: {
+        displayMode: '',
+        displayTone: '',
+        escapedStrings: [],
+      }
       // toneSpecificPhrases: {}, // object of arrays
       // // property to control whether text is generated in the Display component
       // // this way escapedStrings can remain in state even when display is cleared
@@ -27,47 +35,69 @@ export default class Generator extends React.Component {
   updateState = (e) => {
     const { name, value, type } = e.target;
 
+    const options = this.state.options;
+
+    options[name] = type === "checkbox" ? e.target.checked : value;
+    // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
+
     this.setState({
-      ...this.state,
-      [name]: type === "checkbox" ? e.target.checked : value,
-      // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
+      options,
     });
     if (type !== "checkbox") e.preventDefault(); // preventDefault causes checkbox inputs to act all wonky
   };
 
   //function that will update the array of escaped strings in the state
-  updateEscapedStrings = (e) => {
+  generateDisplayData = (e) => {
     e.preventDefault();
 
-    const newArray = generateEscapedStrings(
-      this.state.depth,
-      this.state.useQuotes,
-      this.state.initialChar
+    const {options: {depth, useQuotes, initialChar, mode, tone }} = this.state;
+
+    const newArray = generateDisplayData(
+      depth,
+      useQuotes,
+      initialChar
     );
 
     this.setState({
-      escapedStrings: newArray,
+      displayData: {
+        displayMode: mode,
+        displayTone: tone,
+        escapedStrings: newArray,
+        }
     });
   };
 
   // Function that will prevent the escapedString array to be passed on to the Display component and, as a result, no text will be displayed (as generation is dependent on there being props.children)
   handleClearing = () => {
-    this.setState({ escapedStrings: [] });
+    this.setState({
+      displayData: {
+        ...this.state.displayData,
+        escapedStrings: [],
+        }
+    });
   };
 
   render() {
-    const { tone } = this.state;
+    const { options, displayData: {displayMode, displayTone, escapedStrings} } = this.state;
+
     return (
       <>
+
+        <Description />
         <Options
-          generatorState={this.state}
+          optionsState={options}
+          canClear={!!escapedStrings.length} // clearing button should be disabled if there won't be any content generated in the Display component - which is dependent on whether there are any strings in the escapedStrings array
           updateState={this.updateState}
-          updateEscapedStrings={this.updateEscapedStrings}
-        />
-        <Display
+          generateDisplayData={this.generateDisplayData}
           handleClearing={this.handleClearing}
-          escapedStrings={this.state.escapedStrings}
         />
+        {!!escapedStrings.length && (
+          <Display
+            escapedStrings={escapedStrings}
+            mode={displayMode}
+            tone={displayTone}
+          />
+        )}
       </>
     );
   }
