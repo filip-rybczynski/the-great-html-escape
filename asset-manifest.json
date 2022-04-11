@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/filip-rybczynski/static/css/main.1b448af3.css",
+    "main.js": "/filip-rybczynski/static/js/main.119892fe.js",
+    "index.html": "/filip-rybczynski/index.html",
+    "main.1b448af3.css.map": "/filip-rybczynski/static/css/main.1b448af3.css.map",
+    "main.119892fe.js.map": "/filip-rybczynski/static/js/main.119892fe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b448af3.css",
+    "static/js/main.119892fe.js"
+  ]
+}
