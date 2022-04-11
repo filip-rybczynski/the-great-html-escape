@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b448af3.css",
-    "main.js": "/static/js/main.119892fe.js",
-    "index.html": "/index.html",
-    "main.1b448af3.css.map": "/static/css/main.1b448af3.css.map",
-    "main.119892fe.js.map": "/static/js/main.119892fe.js.map"
+    "main.css": "/the-great-html-escape/static/css/main.1b448af3.css",
+    "main.js": "/the-great-html-escape/static/js/main.119892fe.js",
+    "index.html": "/the-great-html-escape/index.html",
+    "main.1b448af3.css.map": "/the-great-html-escape/static/css/main.1b448af3.css.map",
+    "main.119892fe.js.map": "/the-great-html-escape/static/js/main.119892fe.js.map"
   },
   "entrypoints": [
     "static/css/main.1b448af3.css",
