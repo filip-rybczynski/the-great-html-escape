@@ -6,7 +6,7 @@ export default function Button (props) {
      const {content, mirrored, ...attributes} = props;
     return (
         <button
-            className={mirrored ? "mirror" : null}
+            className={mirrored && "mirror"}
             {...attributes}
         >
             {content}
@@ -19,4 +19,5 @@ Button.propTypes = {
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
     content: PropTypes.string,
+    mirrored: PropTypes.bool,
 }
