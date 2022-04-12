@@ -77,6 +77,25 @@ export default class Generator extends React.Component {
     });
   };
 
+  keepDepthWithinLimits = (e) => {
+    const {min, max, value: userDepth} = e.target;
+
+    let numericMin = parseFloat(min);
+    let numericMax = parseFloat(max);
+
+    console.log(userDepth, numericMax, numericMin)
+
+    if (userDepth < numericMin) {
+      this.setState({
+        depth: numericMin,
+      })
+    } else if (userDepth > numericMax) {
+      this.setState({
+        depth: numericMax,
+      })
+    }
+  }
+
   render() {
     const { options, displayData: {displayMode, displayTone, escapedStrings} } = this.state;
 
@@ -90,6 +109,7 @@ export default class Generator extends React.Component {
           updateState={this.updateState}
           generateDisplayData={this.generateDisplayData}
           handleClearing={this.handleClearing}
+          keepLimits={this.keepDepthWithinLimits}
         />
         {!!escapedStrings.length && (
           <Display

@@ -8,6 +8,10 @@ class Options extends React.Component {
     this.state = {};
   }
 
+  guardLimits = () => {
+    
+  }
+
   render() {
     const { optionsState: {depth, useQuotes, tone, mode, initialChar}, canClear } =
       this.props;
@@ -37,6 +41,7 @@ class Options extends React.Component {
             max="100"
             aria-label="Choose number of escape levels"
             onChange={this.props.updateState}
+            onBlur={this.props.keepLimits}
           />
         </label>
         <label>
