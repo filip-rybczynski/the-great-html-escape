@@ -4,7 +4,7 @@ import Display from "./Display/Display";
 import Description from "./Description/Description";
 
 // Functions
-import generateDisplayData from "../functions/generateDisplayData";
+import generateStrings from "../functions/generateStrings";
 import keepWithinRange from "../functions/keepWithinRange";
 
 export default class Generator extends React.Component {
@@ -61,7 +61,7 @@ export default class Generator extends React.Component {
     } = this.state;
 
     // TODO - change function name, possible conflict!
-    const newArray = generateDisplayData(depth, useQuotes, initialChar);
+    const newArray = generateStrings(depth, useQuotes, initialChar);
 
     this.setState({
       displayData: {
