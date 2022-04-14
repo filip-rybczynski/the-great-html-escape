@@ -13,7 +13,7 @@ class Options extends React.Component {
   }
 
   render() {
-    const { optionsState: {depth, useQuotes, tone, mode, initialChar}, canClear } =
+    const { optionsState: {depth, useQuotes, tone, mode, initialChar, minDepth, maxDepth}, canClear } =
       this.props;
       
     return (
@@ -37,10 +37,11 @@ class Options extends React.Component {
             name="depth"
             value={depth}
             // TODO - might change min to 0 later on, but need ideas for text-content.js
-            min="2"
-            max="100"
+            min={minDepth}
+            max={maxDepth}
             aria-label="Choose number of escape levels"
             onChange={this.props.updateState}
+            // To avoid users inputting values from beyond the set range manually
             onBlur={this.props.keepLimits}
           />
         </label>

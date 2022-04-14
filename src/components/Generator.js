@@ -5,6 +5,7 @@ import Description from "./Description/Description";
 
 // Functions
 import generateDisplayData from "../functions/generateDisplayData";
+import keepWithinRange from "../functions/keepWithinRange";
 
 export default class Generator extends React.Component {
   constructor(props) {
@@ -18,13 +19,15 @@ export default class Generator extends React.Component {
         useQuotes: false,
         tone: "casual",
         mode: "prose",
+        minDepth: 2,
+        maxDepth: 50,
       },
       // properties used in text generation
       displayData: {
-        displayMode: '',
-        displayTone: '',
+        displayMode: "",
+        displayTone: "",
         escapedStrings: [],
-      }
+      },
       // toneSpecificPhrases: {}, // object of arrays
       // // property to control whether text is generated in the Display component
       // // this way escapedStrings can remain in state even when display is cleared
@@ -37,7 +40,10 @@ export default class Generator extends React.Component {
 
     const options = this.state.options;
 
-    options[name] = type === "checkbox" ? e.target.checked : value;
+    options[name] =
+      type === "checkbox"
+        ? e.target.checked
+        : value;
     // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
 
     this.setState({
@@ -50,20 +56,19 @@ export default class Generator extends React.Component {
   generateDisplayData = (e) => {
     e.preventDefault();
 
-    const {options: {depth, useQuotes, initialChar, mode, tone }} = this.state;
+    const {
+      options: { depth, useQuotes, initialChar, mode, tone },
+    } = this.state;
 
-    const newArray = generateDisplayData(
-      depth,
-      useQuotes,
-      initialChar
-    );
+    // TODO - change function name, possible conflict!
+    const newArray = generateDisplayData(depth, useQuotes, initialChar);
 
     this.setState({
       displayData: {
         displayMode: mode,
         displayTone: tone,
         escapedStrings: newArray,
-        }
+      },
     });
   };
 
@@ -73,35 +78,34 @@ export default class Generator extends React.Component {
       displayData: {
         ...this.state.displayData,
         escapedStrings: [],
-        }
+      },
     });
   };
 
   keepDepthWithinLimits = (e) => {
-    const {min, max, value: userDepth} = e.target;
+    const value = keepWithinRange(
+      e.target.value,
+      this.state.options.minDepth,
+      this.state.options.maxDepth
+    );
 
-    let numericMin = parseFloat(min);
-    let numericMax = parseFloat(max);
+    const options = this.state.options;
 
-    console.log(userDepth, numericMax, numericMin)
+    options.depth = value;
 
-    if (userDepth < numericMin) {
-      this.setState({
-        depth: numericMin,
-      })
-    } else if (userDepth > numericMax) {
-      this.setState({
-        depth: numericMax,
-      })
-    }
-  }
+    this.setState({
+      options,
+    });
+  };
 
   render() {
-    const { options, displayData: {displayMode, displayTone, escapedStrings} } = this.state;
+    const {
+      options,
+      displayData: { displayMode, displayTone, escapedStrings },
+    } = this.state;
 
     return (
       <>
-
         <Description />
         <Options
           optionsState={options}
