@@ -77,9 +77,8 @@ class Options extends React.Component {
             disabled={mode === "list"}
           >
             <option value="casual">Casual</option>
-            {/* <option value="funny">Funny</option>
-            <option value="despairing">Despairing</option> */}
-            <option value="pissed">Pissed</option>
+            <option value="annoyed">Annoyed</option>
+            <option value="overReacting">Losing his mind</option>
           </select>
         </label>
         {/* I don't think I needed to make buttons components, but it was good practice */}
