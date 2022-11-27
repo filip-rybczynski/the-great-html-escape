@@ -31,7 +31,7 @@ class Options extends React.Component {
           </select>
         </label>
         <label>
-          How deep do you want to escape?
+          How deep do you want to escape (2-50)?
           <input
             type="number"
             name="depth"

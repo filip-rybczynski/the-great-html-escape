@@ -40,10 +40,7 @@ export default class Generator extends React.Component {
 
     const options = this.state.options;
 
-    options[name] =
-      type === "checkbox"
-        ? e.target.checked
-        : value;
+    options[name] = type === "checkbox" ? e.target.checked : value;
     // checkbox input doesn't use "value" to store info on whether its checked, only "checked"
 
     this.setState({
@@ -60,8 +57,17 @@ export default class Generator extends React.Component {
       options: { depth, useQuotes, initialChar, mode, tone },
     } = this.state;
 
+    if (depth > 50) {
+      alert("Maximum depth is 50! Text will generate with depth = 50.");
+    }
+    if (depth < 2) {
+      alert("Minimum depth is 2! Text will generate with depth = 2.");
+    }
+
+    const finalDepth = depth > 50 ? 50 : depth < 2 ? 2 : depth;
+
     // TODO - change function name, possible conflict!
-    const newArray = generateStrings(depth, useQuotes, initialChar);
+    const newArray = generateStrings(finalDepth, useQuotes, initialChar);
 
     this.setState({
       displayData: {
