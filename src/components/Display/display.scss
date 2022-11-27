@@ -21,6 +21,12 @@ code {
     color: $code-color;
 
     word-break: break-all;
+
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      font-weight:bold;
+    }
 }
 
 li {
